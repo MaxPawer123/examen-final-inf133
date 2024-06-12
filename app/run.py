@@ -2,7 +2,11 @@ from flask import Flask
 from flask_jwt_extended import JWTManager
 from flask_swagger_ui import get_swaggerui_blueprint
 
+from app.controllers.reservation_controller import reservation_bp
+from app.controllers.restaurant_controller import restaurant_bp
+from app.controllers.user_controller import user_bp
 from app.database import db
+
 
 app = Flask(__name__)
 
@@ -32,6 +36,10 @@ db.init_app(app)
 # Inicializa la extensión JWTManager
 jwt = JWTManager(app)
 
+# Registra los blueprints
+app.register_blueprint(reservation_bp, url_prefix='/api')
+app.register_blueprint(restaurant_bp, url_prefix='/api')
+app.register_blueprint(user_bp, url_prefix='/api')
 
 # Crea las tablas si no existen
 with app.app_context():
@@ -40,3 +48,8 @@ with app.app_context():
 # Ejecuta la aplicación
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000, debug=True)
+
+
+
+
+

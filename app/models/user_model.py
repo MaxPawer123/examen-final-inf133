@@ -11,15 +11,11 @@ class User(UserMixin, db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(50), unique=True, nullable=False)
-    phone =  db.Column(db.String(100), nullable=False)
-    email = db.Column(db.String(50), unique=True, nullable=False)
     password_hash = db.Column(db.String(128), nullable=False)
     roles = db.Column(db.String(50), nullable=False)
 
-    def __init__(self, username,phone ,email ,password, roles=["user"]):
+    def __init__(self, username, password, roles=["user"]):
         self.username = username
-        self.phone=phone
-        self.email =email 
         self.roles = json.dumps(roles)
         self.password_hash = generate_password_hash(password)
 
@@ -29,5 +25,5 @@ class User(UserMixin, db.Model):
 
     # Esta funcion encuentra un usuario por su nombre de usuario
     @staticmethod
-    def find_by_name(username):
+    def find_by_username(username):
         return User.query.filter_by(username=username).first()

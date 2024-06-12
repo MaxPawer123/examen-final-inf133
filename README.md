@@ -94,7 +94,7 @@ Restricciones:
 3. Debes utilizar **SQLAlchemy** como ORM para la conexión con la **Base de Datos**.
 4. Debes utilizar **SQLite** como motor de **Base de Datos**.
 5. Debes utilizar **Swagger** para documentar la **API**.
-6. Debes utilizar **JWT** para la autenticación de los usuarios.
+6. Debes utilizar **JWT** para la aut   enticación de los usuarios.
 7. Las respuestas de la **API** deben ser en formato **JSON**.
 8. Debes utilizar el patrón de diseño **MVC** para la estructura de tu proyecto.
 9. Debes manejar los errores y excepciones que puedan ocurrir en la **API** con los códigos de estado **HTTP** correspondientes.
