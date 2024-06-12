@@ -11,11 +11,14 @@ user_bp = Blueprint("user", __name__)
 def register():
     data = request.json
     username = data.get("username")
+    phone= data.get("phone")
+    email=data.get("email")
     password = data.get("password")
+
     roles = data.get("roles")
 
-    if not username or not password:
-        return jsonify({"error": "Se requieren nombre de usuario y contraseña"}), 400
+    if not username or not password or not phone or not email:
+        return jsonify({"error": "Se requieren nombre de usuario y contraseña phonr email"}), 400
 
     existing_user = User.find_by_username(username)
     if existing_user:
@@ -32,12 +35,14 @@ def login():
     data = request.json
     username = data.get("username")
     password = data.get("password")
+    phone= data.get("phone")
+    email=data.get("email")
 
     user = User.find_by_username(username)
     if user and check_password_hash(user.password_hash, password):
         # Si las credenciales son válidas, genera un token JWT
         access_token = create_access_token(
-            identity={"username": username, "roles": user.roles}
+            identity={"username": username, "phone":phone,"email": email,"roles": user.roles}
         )
         return jsonify(access_token=access_token), 200
     else:

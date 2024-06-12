@@ -1,20 +1,22 @@
-def render_product_list(products):
+def render_restaurant_list(restaurants):
     return[
         {
-            "id": product.id,
-            "name": product.name,
-            "description": product.description,
-            "price": product.price,
-            "stock": product.stock,
+            "id": restaurant.id,
+            "name": restaurant.name,
+            "address": restaurant.address,
+            "city": restaurant.city,
+            "phone": restaurant.phone,
+            "description": restaurant.description,
         }
-        for product in products
+        for restaurant in restaurants
     ]
 
-def render_product_detail(product):
+def render_restaurant_detail(restaurant):
     return {
-        "id": product.id,
-        "name": product.name,
-        "description": product.description,
-        "price": product.price,
-        "stock": product.stock,
+            "id": restaurant.id,
+            "name": restaurant.name,
+            "address": restaurant.address,
+            "city": restaurant.city,
+            "phone": restaurant.phone,
+            "description": restaurant.description,
     }
